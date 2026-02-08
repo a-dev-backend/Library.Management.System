@@ -10,7 +10,7 @@ public class Author {
     private String lastName;
     private List<Book> books = new ArrayList<>();
 
-    public Author(Long id, String firstName, String lastName, List<Book> books) {
+    public Author( String firstName, String lastName, List<Book> books) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

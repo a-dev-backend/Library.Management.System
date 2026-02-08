@@ -12,7 +12,7 @@ public class Member {
     private StatusMember statusMember;
     private int nroMember;
 
-    public Member(Long id, int nroMember, StatusMember statusMember, Credential credential, Contact contact, Identity identity) {
+    public Member(int nroMember, StatusMember statusMember, Credential credential, Contact contact, Identity identity) {
         this.id = id;
         this.nroMember = nroMember;
         this.statusMember = statusMember;

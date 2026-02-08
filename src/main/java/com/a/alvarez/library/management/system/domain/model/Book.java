@@ -18,7 +18,7 @@ public class Book {
     private String publicationYear;
     private Language language;
 
-    public Book(Long id, String title, Set<Genre> genres, List<Author> authors, Publisher publisher, String publicationYear, Language language) {
+    public Book(String title, Set<Genre> genres, List<Author> authors, Publisher publisher, String publicationYear, Language language) {
         this.id = id;
         this.title = title;
         this.genres = genres;
