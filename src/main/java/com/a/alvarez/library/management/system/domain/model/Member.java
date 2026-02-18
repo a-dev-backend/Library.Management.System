@@ -1,6 +1,8 @@
 package com.a.alvarez.library.management.system.domain.model;
 
 import com.a.alvarez.library.management.system.domain.enums.StatusMember;
+import com.a.alvarez.library.management.system.util.IdGenerator;
+import com.a.alvarez.library.management.system.util.MemberNumberGenerator;
 
 public class Member {
 
@@ -10,11 +12,11 @@ public class Member {
     private Contact contact;
     private Credential credential;
     private StatusMember statusMember;
-    private int nroMember;
+    private String nroMember;
 
-    public Member(int nroMember, StatusMember statusMember, Credential credential, Contact contact, Identity identity) {
-        this.id = id;
-        this.nroMember = nroMember;
+    public Member( StatusMember statusMember, Credential credential, Contact contact, Identity identity) {
+        this.id = IdGenerator.nextId();
+        this.nroMember = MemberNumberGenerator.nextNumber();
         this.statusMember = statusMember;
         this.credential = credential;
         this.contact = contact;
@@ -61,11 +63,11 @@ public class Member {
         this.statusMember = statusMember;
     }
 
-    public int getNroMember() {
+    public String getNroMember() {
         return nroMember;
     }
 
-    public void setNroMember(int nroMember) {
+    public void setNroMember(String nroMember) {
         this.nroMember = nroMember;
     }
 

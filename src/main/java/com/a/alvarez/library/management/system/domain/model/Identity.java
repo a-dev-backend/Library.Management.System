@@ -6,10 +6,13 @@ public class Identity {
 
     private String firstName;
     private String lastName;
-    private int dni;
+    private String dni;
     private LocalDate birthDate;
 
-    public Identity(String firstName, String lastName, int dni, LocalDate birthDate) {
+    public Identity() {
+    }
+
+    public Identity(String firstName, String lastName, String dni, LocalDate birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dni = dni;
@@ -32,11 +35,11 @@ public class Identity {
         this.lastName = lastName;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
