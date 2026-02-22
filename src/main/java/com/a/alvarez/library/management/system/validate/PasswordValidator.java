@@ -1,5 +1,8 @@
-package com.a.alvarez.library.management.system.service.validate;
+package com.a.alvarez.library.management.system.validate;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PasswordValidator {
 
     public PasswordValidator() {

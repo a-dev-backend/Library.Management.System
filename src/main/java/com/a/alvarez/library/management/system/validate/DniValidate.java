@@ -1,5 +1,8 @@
-package com.a.alvarez.library.management.system.util.validate;
+package com.a.alvarez.library.management.system.validate;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class DniValidate {
 
     private static final String DNI_REGEX = "^\\d{7,8}$";

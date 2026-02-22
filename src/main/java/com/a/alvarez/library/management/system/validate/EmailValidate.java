@@ -1,5 +1,8 @@
-package com.a.alvarez.library.management.system.util.validate;
+package com.a.alvarez.library.management.system.validate;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class EmailValidate {
 
     private static final String EMAIL_REGEX =

@@ -1,5 +1,9 @@
-package com.a.alvarez.library.management.system.util.validate;
+package com.a.alvarez.library.management.system.validate;
 
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class PhoneNumberValidate {
 
     private static final String PHONE_REGEX =

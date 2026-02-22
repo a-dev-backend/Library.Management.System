@@ -1,27 +1,29 @@
 package com.a.alvarez.library.management.system.service;
 
-import com.a.alvarez.library.management.system.domain.enums.StatusMember;
-import com.a.alvarez.library.management.system.domain.model.Contact;
-import com.a.alvarez.library.management.system.domain.model.Credential;
-import com.a.alvarez.library.management.system.domain.model.Identity;
-import com.a.alvarez.library.management.system.domain.model.Member;
-import com.a.alvarez.library.management.system.service.validate.PasswordValidator;
-import com.a.alvarez.library.management.system.service.validate.UserNameValidator;
-import com.a.alvarez.library.management.system.util.validate.*;
+import com.a.alvarez.library.management.system.domain.enums.Role;
+import com.a.alvarez.library.management.system.domain.model.*;
+import com.a.alvarez.library.management.system.repository.UserRepository;
+import com.a.alvarez.library.management.system.util.IdGenerator;
+import com.a.alvarez.library.management.system.util.MemberNumberGenerator;
+import com.a.alvarez.library.management.system.validate.*;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
-
+@Service
 public class RegisterService {
 
-    private UserNameValidator userNameValidate = new UserNameValidator();
-    private PasswordValidator passwordValidate = new PasswordValidator() ;
+    private UserNameValidator userNameValidate;
+    private PasswordValidator passwordValidate;
+    private UserRepository userRepository;
 
-
-
-    public RegisterService() {
+    public RegisterService(UserNameValidator userNameValidate, PasswordValidator passwordValidate, UserRepository userRepository) {
+        this.userNameValidate = userNameValidate;
+        this.passwordValidate = passwordValidate;
+        this.userRepository = userRepository;
     }
-    public void registerMember(String firstName, String lastName, LocalDate birthDate, String dni, String email, String phoneNumber,String userName, String password) {
+
+    public void registerMember(String firstName, String lastName, LocalDate birthDate, String dni, String email, String phoneNumber, String userName, String password) {
 
 
         NameValidate.verifyName(firstName, lastName);
@@ -36,6 +38,8 @@ public class RegisterService {
         Contact contact = new Contact(email, phoneNumber);
         Credential credential = new Credential(userName,password);
 
-        Member member = new Member(StatusMember.ACTIVE,credential,contact,identity);
+        User user = new User(IdGenerator.nextId(),identity,contact,credential, Role.MEMBER, MemberNumberGenerator.nextNumber());
+        userRepository.save(user);
     }
+
 }

@@ -2,21 +2,24 @@ package com.a.alvarez.library.management.system.controller;
 
 import com.a.alvarez.library.management.system.service.RegisterService;
 import com.a.alvarez.library.management.system.util.ConsoleImputUtil;
+import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
 
+@Controller
 public class RegisterController {
 
-    private RegisterService registerService = new RegisterService();
+    private  final RegisterService registerService;
 
-    public RegisterController() {
+    public RegisterController(RegisterService registerService) {
+        this.registerService = registerService;
     }
 
     public void register(){
 
         boolean verification = false;
 
-        do{
+        try{
 
             System.out.println("---------------------------------------------------------");
             System.out.println("---------------------------------------------------------");
@@ -41,10 +44,15 @@ public class RegisterController {
 
             registerService.registerMember(firstName,lastName, birthDate, dni, email, phoneNumber,userName, password);
 
-            ConsoleImputUtil.readString("\n" +
+            System.out.println("\n" +
                     "successful registration");
 
-        }while(verification != true);
+        } catch (Exception e) {
+
+            System.out.println("Error: " + e.getMessage());
+            System.out.println("\nPress Enter to return to main menu...");
+            ConsoleImputUtil.readString("");
+        };
 
     }
 

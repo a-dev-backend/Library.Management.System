@@ -1,8 +1,10 @@
-package com.a.alvarez.library.management.system.util.validate;
+package com.a.alvarez.library.management.system.validate;
+
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.Period;
-
+@Component
 public class BirthDateValidate {
 
     public BirthDateValidate() {

@@ -1,18 +1,23 @@
 package com.a.alvarez.library.management.system.controller;
 
+import org.springframework.stereotype.Controller;
+
 import static com.a.alvarez.library.management.system.util.ConsoleImputUtil.readInt;
 import static com.a.alvarez.library.management.system.util.ConsoleImputUtil.readString;
-
+@Controller
 public class AccessController {
 
 
-    private final LoginController  loginController;
+    private final AuthController authController ;
     private final RegisterController registerController;
 
-    public AccessController() {
-        this.loginController = new LoginController();
-        this.registerController = new RegisterController();
+
+    public AccessController(AuthController authController, RegisterController registerController) {
+        this.authController = authController;
+        this.registerController = registerController;
     }
+
+
 
     public void menuMain(){
 
@@ -40,7 +45,7 @@ public class AccessController {
 
                 case 1 :
 
-                    loginController.login();
+                    authController.login();
 
                     break;
                 case 2 :

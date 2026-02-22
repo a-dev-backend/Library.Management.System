@@ -1,26 +1,24 @@
 package com.a.alvarez.library.management.system.domain.model;
 
-import com.a.alvarez.library.management.system.domain.enums.StatusMember;
+import com.a.alvarez.library.management.system.domain.enums.Role;
 import com.a.alvarez.library.management.system.util.IdGenerator;
-import com.a.alvarez.library.management.system.util.MemberNumberGenerator;
 
-public class Member {
-
+public class User {
 
     private Long id;
     private Identity identity;
     private Contact contact;
     private Credential credential;
-    private StatusMember statusMember;
-    private String nroMember;
+    private Role role;
+    private String memberNumber;
 
-    public Member( StatusMember statusMember, Credential credential, Contact contact, Identity identity) {
-        this.id = IdGenerator.nextId();
-        this.nroMember = MemberNumberGenerator.nextNumber();
-        this.statusMember = statusMember;
-        this.credential = credential;
-        this.contact = contact;
+    public User(Long id, Identity identity, Contact contact, Credential credential, Role role, String memberNumber) {
+        this.id = id;
         this.identity = identity;
+        this.contact = contact;
+        this.credential = credential;
+        this.role = role;
+        this.memberNumber = memberNumber;
     }
 
     public Long getId() {
@@ -55,31 +53,31 @@ public class Member {
         this.credential = credential;
     }
 
-    public StatusMember getStatusMember() {
-        return statusMember;
+    public Role getRole() {
+        return role;
     }
 
-    public void setStatusMember(StatusMember statusMember) {
-        this.statusMember = statusMember;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public String getNroMember() {
-        return nroMember;
+    public String getMemberNumber() {
+        return memberNumber;
     }
 
-    public void setNroMember(String nroMember) {
-        this.nroMember = nroMember;
+    public void setMemberNumber(String memberNumber) {
+        this.memberNumber = memberNumber;
     }
 
     @Override
     public String toString() {
-        return "Member{" +
+        return "User{" +
                 "id=" + id +
                 ", identity=" + identity +
                 ", contact=" + contact +
                 ", credential=" + credential +
-                ", statusMember=" + statusMember +
-                ", nroMember=" + nroMember +
+                ", role=" + role +
+                ", memberNumber='" + memberNumber + '\'' +
                 '}';
     }
 }
